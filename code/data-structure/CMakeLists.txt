@@ -8,4 +8,6 @@ set(SOURCE_LIST main.cpp)
 
 add_subdirectory(tree)
 
+add_subdirectory(hash-table)
+
 add_executable(test ${SOURCE_LIST})
