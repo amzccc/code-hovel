@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--这是注释-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./简单的css.css">
+    <title>head不会展示在网页上，作用是定义标题和链接css文件等，body的内容才会展示在网页上</title>
+</head>
+<body>
+    <h1>一级标题标签</h1>
+    <h2>二级标题，可以一直到h6</h2>
+    <p>段落标签，展示的是一段文字</p>
+    <!-- 行级元素之间不会新起一段，如span、img图片、a链接、strong加粗、em斜体等 -->
+    <!-- 块级元素之间会新起一段 如div、h、p、form等-->
+    <a href="http://bing.com" target="_blank">链接的使用，href指明跳转的链接，target可以指定打开的方式</a>
+    <!-- 所有的标签都可以有属性，永远写在开始标签中，往往是键值对形式 -->
+    <ul>无序列表标签
+        <li>列表项</li>
+        <li>列表项</li>
+    </ul>
+    <ol>有序列表标签
+        <li>列表项1</li>
+        <li>列表项2</li>
+    </ol>
+    <table>表格标签
+        <!-- 表头 -->
+        <thead>
+            <!-- 每一行 -->
+            <tr>
+                <!-- 每一列的列名 -->
+                <th>列名1</th>
+                <th>列名2</th>
+                <th>列名3</th>
+            </tr>
+        </thead>
+        <!-- 表体 -->
+        <tbody>
+            <tr>
+                <td>第一行，第一列的值</td>
+                <td>第一行，第二列的值</td>
+                <td>第一行，第三列的值</td>
+            </tr>
+            <tr>
+                <td>第二行，第一列的值</td>
+                <td>第二行，第二列的值</td>
+                <td>第二行，第三列的值</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- 表单，html只能指定表单的格式，而不能添加功能，功能需要js来添加 -->
+    <form action="这里指定提交到哪里，但有更好的框架来实现，所以不建议使用这个属性">
+        <label>标签，提示当前是要干啥</label>
+        <!-- 使用input输入内容，type有多种，指定输入的形式 -->
+        <input type="text">
+        <!-- 使用br来换行 -->
+        <br>
+        <!-- hr会插入水平分割线 -->
+        <hr>
+        <div>
+            <label>文本框</label>
+            <textarea></textarea>
+        </div>
+        <div>
+            <!-- 选择标签 -->
+            <select>
+                <option value="">A.对</option>
+                <option value="">B.不对</option>
+                <option value="">C.不会就选C</option>
+            </select>
+        </div>
+    </form>
+    <button>按钮，点一下，但是点了也不会做任何事情，逻辑需要js等实现</button>
+    <img 
+        src="https://unsplash.com/photos/a-man-climbing-up-the-side-of-a-mountain-85ey1vFIwkc"
+        alt="加载不出来图片会显示这个"
+    />
+    <script src="./简单的js使用.js">
+        // script块内注释
+    </script>
+    <!-- css基本使用 -->
+    <!-- 选择器包括 元素选择器、类选择器、id选择器，类选择器是将标签的类设定为自定义变量，id选择器是将标签的id设置为自定义变量 -->
+    <h6>元素选择器</h6>
+    <p class="class_selection">类选择器</p>
+    <p id="id_selection">id选择器</p>
+    <div class="parent1">
+        <div class="child">
+            有层次关系的子类可区分与其他同名元素
+        </div>
+    </div>
+    <div class="child">
+        其他同名元素
+    </div>
+    <p class="text_1">文本样式</p>
+
+    <div class="flex-model">
+        <div class="item">项目</div>
+        <div class="item">项目</div>
+        <div class="item">项目</div>
+    </div>
+</body>
+</html>
