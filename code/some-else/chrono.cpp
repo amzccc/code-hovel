@@ -5,6 +5,12 @@
 using namespace std;
 
 int main() {
+    cout << "system_clock precision: ";
+    cout << chrono::system_clock::period::num << "/" << chrono::system_clock::period::den << endl;
+    cout << "steady_clock precision: ";
+    cout << chrono::steady_clock::period::num << "/" << chrono::steady_clock::period::den << endl;
+    cout << "chrono::high_resolution_clock precision: ";
+    cout << chrono::high_resolution_clock::period::num << "/" << chrono::high_resolution_clock::period::den << endl;
     // 获取当前时间
     chrono::time_point<chrono::steady_clock, chrono::nanoseconds> curTime = chrono::steady_clock::now();        // 是一个时间点
     // cout << "steady_clock now: " << curTime << endl; //error 时间点不能直接输出
@@ -94,6 +100,7 @@ int main() {
     cout << "};\n";
     // 转成字符串输出
     date = asctime(utcTime);
+    cout << date << endl;
     chrono::system_clock::now().time_since_epoch().count();
     return 0;
 }
