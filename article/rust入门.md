@@ -160,3 +160,43 @@ let str_new = str;
 println!("{str}");  // error，str在上一步失去了所有权，这是一个非法的访问
 ```
 
+### 内存管理模型
+
+Rust会在编译期做一系列的检查，如果检查出内存有问题的话，会直接报错。主要通过所有权机制(ownership rules)、引用检查(borrow checker)、生命周期(lifetime)、引用计数，使得在不牺牲性能的情况下（和C/C++是一个级别的），保证了内存的安全。
+
+Rust和其他语言最不同的就是所有权的转移，当把变量传递给别的变量后，会被立刻销毁，无论是作为其他的构造参数，还是作为函数的入参。
+如果不想要转移所有权，就需要使用`clone()`深拷贝一份。
+
+Rust不允许函数直接返回一个引用，因为这样无法判断引用变量的生命周期。
+
+### String和&str
+
+String是一个堆分配的可变字符串类型
+&str是指字符串切片引用，是在栈上分配的。
+&str是个不可变引用，指向存储在其他地方的utf-8编码的字符串数据。
+
+String是具有所有权的，&str没有。
+
+Struct中属性使用String，如果不使用显式声明生命周期无法使用&str，麻烦而又有隐患。
+
+函数参数推荐使用&str，不用交出所有权。&str为参数，可以传递&str和&String；&String为参数，只能传&String。
+
+```rs
+fn foo(str: &str) {
+    println!("{str}");
+}
+
+fn main() {
+  let name = String::from("value c++");
+
+  let name2 = "Rust".to_string();
+
+  let str3 = "hello".to_owned();
+
+  let new_name = name.replace("c++", "cpp");
+
+  println!("{name} {name2} {str3}");
+
+  foo(&new_name);
+}
+```
