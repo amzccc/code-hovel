@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+#include "graph.hpp"
 
 using namespace std;
 const unsigned VertexMaxSize = 100;

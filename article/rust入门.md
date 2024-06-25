@@ -200,3 +200,70 @@ fn main() {
   foo(&new_name);
 }
 ```
+
+### 枚举与匹配模式
+
+```rs
+enum Shape {
+  Circle(f64),
+  Rectangle(f64, i32)
+}
+
+pub enum Option<T> {
+  None,
+  Some(T)
+}
+
+pub enum Result<T,E> {
+  OK(T),
+  Err(E)
+}
+```
+
+匹配模式，感觉可以类比于`switch`的用法。
+```rs
+match number {
+  0 => println!("Zero"),
+  1 | 2 => println!("One or Two"),
+  3..=9 => println!("From three to nine"),
+  n if n % 2 == 0 => println!("even number"),
+  _=>println!("other")
+}
+```
+
+### 结构体和函数
+
+结构体
+```rust
+struct Point {
+  x: i32,
+  y: i32
+}
+```
+
+关联函数是与类型相关联的函数，调用时为结构体名::函数名，类比于静态成员函数
+```rs
+impl Point {
+  fn new(x: u32, y: u32) -> Self {
+    Point{x, y};
+  }
+}
+```
+关联变量
+```rs
+impl Point {
+  PI: f64 = 3.1415826;
+}
+```
+
+### 所有权
+
+任意时刻都只能有一个变量拥有所有权。
+每当值从一个位置传递到另一个位置，borrow checker会重新评估所有权
+* immutable borrow 不可变借用，使用`&`符号
+* mutable borrow 可变借用，使用`&mut`符号
+* move 转移所有权，默认是转移所有权
+
+
+
+
