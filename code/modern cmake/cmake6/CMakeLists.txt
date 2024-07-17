@@ -1,0 +1,31 @@
+cmake_minimum_required(VERSION 3.20.0)
+
+project(InstallExport CXX)
+
+include(GNUInstallDirs)
+
+add_library(Calc STATIC calc.cpp)
+
+set_target_properties(Calc PROPERTIES PUBLIC_HEADER include/calc.h)
+
+set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/install)
+
+target_include_directories(Calc PUBLIC 
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+)
+
+install(TARGETS Calc
+    EXPORT Calc_Export
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
+
+install(EXPORT Calc_Export 
+    FILE CalcConfig.cmake
+    NAMESPACE calc::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake
+)
