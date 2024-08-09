@@ -9,28 +9,36 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#include <numeric>
+#include <limits>
 
 using namespace std;
 
 int minimumAddedInteger(vector<int>& nums1, vector<int>& nums2) {
     std::sort(nums1.begin(), nums1.end());
     std::sort(nums2.begin(), nums2.end());
-    int res = 0;
+    int res = numeric_limits<int>::max();
     for(size_t i = 0, j = 1; i < nums1.size() && j < nums1.size();) {
-        vector<int> tmp(nums1.begin(), nums1.begin() + i);
-        tmp.insert(tmp.end(), nums1.begin() + i + 1, nums1.begin() + j);
-        tmp.insert(tmp.end(), nums1.begin() + j + 1, nums1.end());
-        res = nums2[0] - tmp[0];
-        size_t k = 1;
-        for(; k < nums2.size(); k++) {
-            if(nums2[k] - tmp[k] != res) {
+        size_t k = 0;
+        while(k == i || k == j) {
+            ++k;
+        }
+        int diff = nums2[0] - nums1[k];
+        size_t n = 0;
+        while(k < nums1.size()) {
+            if(k == i || k == j) {
+                ++k;
+                continue;
+            }
+            if(diff != nums2[n] - nums1[k]) {
                 break;
             }
+            ++k;
+            ++n;
         }
-        if(k == nums2.size()) {
-            break;
+        if(k == nums1.size() && res > diff) {
+            res = diff;
         }
-
         ++j;
         if(j == nums1.size()) {
             ++i;
@@ -41,8 +49,8 @@ int minimumAddedInteger(vector<int>& nums1, vector<int>& nums2) {
 }
 
 int main() {
-    vector<int> nums1{ 4,20,16,12,8 };
-    vector<int> nums2{ 14,18,10 };
+    vector<int> nums1{ 9,4,3,9,4 };
+    vector<int> nums2{ 7,8,8 };
     cout << minimumAddedInteger(nums1, nums2) << endl;
 
 
