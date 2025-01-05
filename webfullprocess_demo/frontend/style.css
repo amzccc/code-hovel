@@ -1,0 +1,78 @@
+/* 全局样式 */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: #333;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* 表单容器样式 */
+div {
+  background: #ffffff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* 标签样式 */
+label {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #666;
+}
+
+/* 输入框样式 */
+input[type="text"] {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* 按钮样式 */
+button {
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* 响应显示区样式 */
+#response {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #007bff;
+  font-weight: bold;
+  text-align: center;
+}
